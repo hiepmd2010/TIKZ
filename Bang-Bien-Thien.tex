@@ -1,0 +1,73 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{vietnam}
+\usepackage{times,amssymb} 
+\usepackage{tikz,tkz-tab}
+\pagestyle{empty}
+%\everymath{\displaystyle}
+\begin{document}
+\begin{tikzpicture}[>=stealth, scale=1]
+ \tkzTabInit[nocadre,lgt=3,espcl=2,deltacl=.4]
+ {$x$/.7,$u=x^2+x$/.7,$2x+1$/.7,$f'(u)-(u-1)$/.7,$h'(x)$/.7,$h(x)$/2.8}
+ {$-\infty$,$-2$,$-1$,$-\frac12$,$0$,$1$,$+\infty$}
+ \tkzTabLine{+\infty,,2,,0,,-\frac14,,0,,2,,+\infty}
+ \tkzTabLine{,-,t,-,t,-,0,+,t,+,t,+,}
+ \tkzTabLine{,+,0,-,0,+,t,+,0,-,0,+,}
+ \tkzTabLine{,-,0,+,0,-,0,+,0,-,0,+,}
+ \draw[thick, dotted] ([shift={(-.3,0)}]barycentric cs:N15=1,N16=1)--([shift={(.3,0)}]barycentric cs:N75=1,N76=1);
+ \path
+ (N15)node[below](A){$+\infty$}
+ (N26)node[above](B){$ $}
+ (N25)node[below](B'){$ $}
+ (barycentric cs:N15=1,N26=1)node(A'){$ $}
+ (barycentric cs:N35=1,N36=1)node[fill=white](C){$0$}
+ (N46)node[above](D){$ $}
+ (N45)node[below](D'){$ $}
+ (barycentric cs:N55=1,N56=1)node[fill=white](E){$0$}
+ (N66)node[above](F){$ $}
+ (N65)node[below](F'){$ $}
+ (barycentric cs:N66=1,N75=1)node(G'){$ $}
+ (N75)node[below](G){$+\infty$};
+ \foreach\X/\Y in{A/B,B/C,C/D,D/E,E/F,F/G}\draw[thick,->](\X)--(\Y);
+ \foreach\X/\Y in{A'/B',B'/C,C/D',D'/E,E/F',F'/G'}\draw[thick,dashed,->](\X)--(\Y);
+ \end{tikzpicture}
+%\end{document}
+\begin{tikzpicture}
+\tikzset{double style/.append style = {double distance=2.5pt}}
+\tkzTabInit[nocadre,lgt=1,espcl=2.5,deltacl=.4]
+{$x$/.6,$y$/2.1}
+ {$-\infty$,$-3$,$-2$,$-1$,$1$,$+\infty$}
+ \tkzTabVar{-/$\frac{1}{2}$,+D-/$+\infty$/$-\infty$,+D-/$+\infty$/$-\infty$,+D-/$+\infty$/$-\infty$,R/,+/$+\infty$}
+\path(barycentric cs:N42=1,N61=1)node[circle,fill=white,inner sep=0pt]{$f(x_o)$};
+\end{tikzpicture}
+%\end{document}
+
+\begin{tikzpicture}
+\tkzTabInit[nocadre]
+{$x$ /.6,$y'$ /.6,$y$ /2}
+{$-\infty$,$-1$,$0$,$1$,$+\infty$}
+\tkzTabLine{,-,$0$,+,$0$,-,$0$,+,}
+\tkzTabVar{+/ $+\infty$ ,-/$-5$,+/$2$,-/$-5$,+/$+\infty$}
+\end{tikzpicture}
+%\end{document}
+
+\begin{tikzpicture}
+\tkzTabInit[nocadre]{$x$/.6,$f'(x)$/.6,$f(x)$/2}
+{$-\infty$,$1$,$3$,$+\infty$}
+\tkzTabLine{,-,0,+,0,-,}
+\tkzTabVar{+/  $+\infty$, -/$-2$,+/ $4$, -/$-\infty$ } 
+\end{tikzpicture}
+%\end{document}
+
+\begin{tikzpicture}
+\tkzTabInit[nocadre,lgt=1.2,espcl=2.5,deltacl=0.6]
+{$x$/.6,$y'$/.6,$y$/2}
+{$-\infty$,$-1$,$0$,$1$,$+\infty$}
+\tkzTabLine{,-,0,-,0,+,0,+,}
+\path (N12)node[below](A){$ $}
+(N33)node[above](C){$y_\mathrm{CT}$}
+(N52)node[below](E){$ $};
+\foreach\x/\y in{A/C,C/E}\draw[-stealth,thick](\x)--(\y);
+\path(barycentric cs:N22=1,N23=1)node[fill=white](B){$y(-1)$}
+(barycentric cs:N42=1,N43=1)node[fill=white](D){$y(1)$};
+\end{tikzpicture}
+\end{document}
